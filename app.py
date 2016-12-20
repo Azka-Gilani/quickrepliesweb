@@ -114,13 +114,6 @@ def processIntentName(req):
     intent = parameters.get("intentName")
     return intent
 
-def sendSparkPOST(url, data):
-    request = urllib2.Request(url, json.dumps(data),
-    headers={"Accept" : "application/json","Content-Type":"application/json"})
-    request.add_header("Authorization", "Bearer "+bearer)
-    contents = urllib2.urlopen(request).read()
-    return contents
-
 def processlocation(req):
     result = req.get("result")
     parameters = result.get("parameters")
@@ -245,264 +238,47 @@ def makeWebhookResult(data):
     variable4=str(row_number[3]) 
     
     speech = "Here are some properties with your choice: "+"\n"+row_number[3] +" in "+ row_location[0] + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
-    if "unable" in row_title[0]:
-        message={
-         "text":row_title[0],
-         "quick_replies": [
-           
-                 {
-                "content_type":"text",
-                "title": "Buy Property",
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            }
-        ]
-           
-    }
-    elif length==1:
-                 message={
-                   "attachment":{
-                    "type":"template",
-                       "payload":{
-            "template_type":"generic",
-            "elements":[
-          {
-             "title":row_title[0],
-                "item_url": "https://www.aarz.pk/property-detail/"+row_slug[0],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg" ,
-             "subtitle":row_location[0],
-             "buttons":[
-              {
-              "type":"phone_number",
-              "title":"Call Agent",
-              "payload":"+92"+variable1[1:]
-              },
-                 {
-                "type":"element_share"
-                  }
-            ]
-          }
-        ]
+         message= {
+  "type": "catalogue",
+  "msgid": "cat_212",
+  "items": [{
+    "title": "White T Shirt",
+    "subtitle": "Soft cotton t-shirt \nXs, S, M, L \n$10",
+    "imgurl": "https://goo.gl/Njw2WF",
+    "options": [
+        {
+        "type": "url",
+        "title": "View Details",
+        "url": "https://goo.gl/Njw2WF"
+      }, 
+            {
+        "type": "text",
+        "title": "Buy"
       }
-    },
-                      "quick_replies": [
-            {
-                "content_type":"text",
-                "title": QR[0],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[1],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[2],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[3],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[4],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": "Buy Property",
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            }
-        ]
-  }
-    elif length==2:
-         message= {
-         "attachment": {
-           "type": "template",
-            "payload": {
-               "template_type": "generic",
-               "elements": [{
-               "title": row_title[0],
-               "subtitle": row_location[0],
-                "item_url": "https://www.aarz.pk/property-detail/"+row_slug[0],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg" ,
-                "buttons": [{
-                "type":"phone_number",
-              "title":"Call Agent",
-             "payload":"+92"+variable1[1:]
-                },
-                    {
-                "type":"element_share"
-                    
-                    }, 
-                   ],
-          }, 
-                   {
-                "title": row_title[1],
-                "subtitle": row_location[1],
-                 "item_url": "https://www.aarz.pk/property-detail/"+row_slug[1],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg" ,
-                "buttons": [{
-                "type":"phone_number",
-              "title":"Call Agent",
-             "payload":"+92"+variable2[1:]
-            },
-                     {
-                "type":"element_share"
-                    
-                    }, 
-                   ]
-          }]
-            
-        }
-      },
-             "quick_replies": [
-            {
-                "content_type":"text",
-                "title": QR[0],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[1],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[2],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[3],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[4],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": "Buy Property",
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            }
-        ]
-    }
-    else:
-         message= {
-         "attachment": {
-           "type": "template",
-            "payload": {
-               "template_type": "generic",
-               "elements": [
-                   {
-               "title": row_title[0],
-               "subtitle": row_location[0],
-                "item_url": "https://www.aarz.pk/property-detail/"+row_slug[0],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg" ,
-                "buttons": [{
-                "type":"phone_number",
-              "title":"Call Agent",
-              "payload":"+92"+variable1[1:]
-                },
-                    {
-                "type":"element_share"
-                  
-            }, 
-                   ],
-          }, 
-                   {
-               "title": row_title[1],
-               "subtitle": row_location[1],
-                "item_url": "https://www.aarz.pk/property-detail/"+row_slug[1],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg" ,
-                "buttons": [{
-                "type":"phone_number",
-              "title":"Call Agent",
-              "payload":"+92"+variable2[1:]
-            }, 
-                     {
-                "type":"element_share"
-                    
-                    }, 
-                   ],
-          }, 
-                   {
-               "title": row_title[2],
-               "subtitle": row_location[2],
-                "item_url": "https://www.aarz.pk/property-detail/"+row_slug[2],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg" ,
-                "buttons": [{
-               "type":"phone_number",
-              "title":"Call Agent",
-              "payload":"+92"+variable3[1:]
-            }, 
-                     {
-                "type":"element_share"
-                    
-                    }, 
-                   ],
-          }, 
-                   {
-                "title": row_title[3],
-                "subtitle": row_location[3],
-                 "item_url": "https://www.aarz.pk/property-detail/"+row_slug[3],               
-               "image_url":"http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg" ,
-                "buttons": [{
-               "type":"phone_number",
-              "title":"Call Agent",
-              "payload":"+92"+variable4[1:]
-            },
-                     {
-                "type":"element_share"
-                    
-                    }, 
-                   ]
-          }]
-            
-        }
-      },
-             "quick_replies": [
-            {
-                "content_type":"text",
-                "title": QR[0],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[1],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[2],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[3],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": QR[4],
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            },
-                 {
-                "content_type":"text",
-                "title": "Buy Property",
-                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
-            }
-        ]
-    }
+
+    ]
+  }, 
+     {
+    "title": "Grey T Shirt",
+    "subtitle": "Soft cotton t-shirt \nXs, S, M, L \n$12",
+    "imgurl": "https://goo.gl/Njw2WF",
+    "options": [
+        {
+      "type": "url",
+      "title": "View Details",
+      "url": "https://goo.gl/Njw2WF"
+    }, 
+        {
+      "type": "text",
+      "title": "Buy"
+    }]
+  }]
+}
             
     return {
         "speech": speech,
         "displayText": speech,
-        "data":{"facebook":message}
+        "data": message
         # "contextOut": [],
         #"source": "apiai-weather-webhook-sample"
     }
