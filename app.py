@@ -238,7 +238,8 @@ def makeWebhookResult(data):
     variable4=str(row_number[3]) 
     
     speech = "Here are some properties with your choice: "+"\n"+row_number[3] +" in "+ row_location[0] + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
-         message= {
+         
+    message= {
   "type": "catalogue",
   "msgid": "cat_212",
   "items": [{
