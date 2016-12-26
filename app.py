@@ -102,7 +102,7 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "GettingStarted" in intent_name:
+    if "GettingStarted" in intent_name or "BuyPlot" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name=Islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
