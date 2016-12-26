@@ -101,11 +101,15 @@ def processRequest(req):
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
-    # minimum_value,maximum_value=minimum_value,maximum_value    
-    baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
-    result = urllib.urlopen(baseurl).read()
-    data = json.loads(result)
-    res = makeWebhookResult(data)
+    # minimum_value,maximum_value=minimum_value,maximum_value
+    if "GettingStarted" in intent_name:
+        res="Buy Property"
+    else:
+        
+        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+        result = urllib.urlopen(baseurl).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
     return res
 
 def processIntentName(req):
@@ -238,43 +242,18 @@ def makeWebhookResult(data):
     variable4=str(row_number[3]) 
     
     speech = "Here are some properties with your choice: "+"\n"+row_number[3] +" in "+ row_location[0] + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
-         
-    message= {
-  "type": "catalogue",
-  "msgid": "cat_212",
-  "items": [{
-    "title": "White T Shirt",
-    "subtitle": "Soft cotton t-shirt \nXs, S, M, L \n$10",
-    "imgurl": "https://goo.gl/Njw2WF",
-    "options": [
-        {
-        "type": "url",
-        "title": "View Details",
-        "url": "https://goo.gl/Njw2WF"
-      }, 
-            {
+    if "GettingStarted" in intent_name:     
+        message= {
+   "type": "quick_reply",
+    "content": {
         "type": "text",
-        "title": "Buy"
-      }
-
-    ]
-  }, 
-     {
-    "title": "Grey T Shirt",
-    "subtitle": "Soft cotton t-shirt \nXs, S, M, L \n$12",
-    "imgurl": "https://goo.gl/Njw2WF",
+        "text": "I am your agent, How can I help you?"
+    },
+    "msgid": "qr_212",
     "options": [
-        {
-      "type": "url",
-      "title": "View Details",
-      "url": "https://goo.gl/Njw2WF"
-    }, 
-        {
-      "type": "text",
-      "title": "Buy"
-    }]
-  }]
-}
+        "Buy Property"
+    ]
+  }
             
     return {
         "speech": speech,
