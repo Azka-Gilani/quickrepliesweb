@@ -250,12 +250,65 @@ def makeWebhookResult(data):
    "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "I am your agent, How can I help you?"
+        "text": "I am your digital assistant today, How can I help you with your property needs?"
     },
     "msgid": "qr_212",
     "options": [
         "Buy Property"
     ]
+  }
+    elif "BuyPlot" in intent_name:
+          message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "Great! Kindly select the city in which you want to buy propery?"
+    },
+    "msgid": "qr_213",
+    "options": [
+        "Rawalpindi",
+        "Karachi",
+        "Islamabad",
+        "Lahore",
+        "Other city? Specify"
+    ]
+  }
+    elif "ChooseCity" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      }
+
+    ]
+  }]
   }
             
     return {
