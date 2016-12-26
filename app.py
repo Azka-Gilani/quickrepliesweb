@@ -103,7 +103,7 @@ def processRequest(req):
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
     if "GettingStarted" in intent_name:
-        baseurl = "https://aarz.pk/bot/index.php?city_name=Islamabad"+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+        baseurl = "https://aarz.pk/bot/index.php?city_name=Islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
