@@ -258,11 +258,11 @@ def makeWebhookResult(data):
     ]
   }
     elif "BuyPlot" in intent_name:
-          message= {
+        message= {
    "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "Great! Kindly select the city in which you want to buy propery?"
+        "text": "Great! Kindly select the city in which you want to buy property?"
     },
     "msgid": "qr_213",
     "options": [
