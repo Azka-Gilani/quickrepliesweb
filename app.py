@@ -270,7 +270,7 @@ def makeWebhookResult(data):
         "Karachi",
         "Islamabad",
         "Lahore",
-        "Other city? Specify"
+        "Other city?"
     ]
   }
     elif "ChooseCity" in intent_name:
@@ -308,7 +308,40 @@ def makeWebhookResult(data):
       }
 
     ]
-  }]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      }
+
+    ]
+  }
+  ]
   }
             
     return {
