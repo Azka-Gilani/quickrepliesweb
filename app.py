@@ -15,6 +15,7 @@ from flask import make_response
 app = Flask(__name__)
 intent_name="string"
 QR=['0','1','2','3','4','5','6']
+city_names="string"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
