@@ -102,7 +102,7 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "GettingStarted" in intent_name or "BuyPlot" in intent_name:
+    if "GettingStarted" in intent_name or "BuyPlot" in intent_name or "Menu" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name=Islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
@@ -271,6 +271,21 @@ def makeWebhookResult(data):
         "Islamabad",
         "Lahore",
         "Other city?"
+    ]
+  }
+    elif "Menu" in intent_name:
+        message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "Kindly select one of the options"
+    },
+    "msgid": "qr_213",
+    "options": [
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type"
     ]
   }
     elif "ChooseCity" in intent_name:
