@@ -283,7 +283,7 @@ def makeWebhookResult(data):
     "msgid": "qr_213",
     "options": [
         "Sector in "+city_names,
-        "Other City?Specify"
+        "Other City?Specify",
         "Hot Property",
         "Price Range",
         "Land Area",
