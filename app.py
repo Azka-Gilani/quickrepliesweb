@@ -289,7 +289,11 @@ def makeWebhookResult(data):
         "type": "phone_number",
         "title": "Call us",
         "phone_number":"+92"+variable1[1:]
-      }
+      },
+        {
+      "type": "text",
+      "title": "Buy"
+    }
 
     ]
   }, 
@@ -305,7 +309,11 @@ def makeWebhookResult(data):
         "type": "phone_number",
         "title": "Call us",
         "phone_number":"+92"+variable2[1:]
-      }
+      },
+        {
+      "type": "text",
+      "title": "Buy"
+    }
 
     ]
   },
@@ -321,7 +329,11 @@ def makeWebhookResult(data):
         "type": "phone_number",
         "title": "Call us",
         "phone_number":"+92"+variable3[1:]
-      }
+      },
+        {
+      "type": "text",
+      "title": "Buy"
+    }
 
     ]
   },
@@ -337,7 +349,11 @@ def makeWebhookResult(data):
         "type": "phone_number",
         "title": "Call us",
         "phone_number":"+92"+variable4[1:]
-      }
+      },
+        {
+      "type": "text",
+      "title": "Buy"
+    }
 
     ]
   }
