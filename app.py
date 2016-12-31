@@ -292,7 +292,7 @@ def makeWebhookResult(data):
       },
         {
       "type": "text",
-      "title": "Buy"
+      "title": "Show Menu"
     }
 
     ]
@@ -312,7 +312,7 @@ def makeWebhookResult(data):
       },
         {
       "type": "text",
-      "title": "Buy"
+      "title": "Show Menu"
     }
 
     ]
@@ -332,7 +332,7 @@ def makeWebhookResult(data):
       },
         {
       "type": "text",
-      "title": "Buy"
+      "title": "Show Menu"
     }
 
     ]
@@ -352,7 +352,7 @@ def makeWebhookResult(data):
       },
         {
       "type": "text",
-      "title": "Buy"
+      "title": "Show Menu"
     }
 
     ]
