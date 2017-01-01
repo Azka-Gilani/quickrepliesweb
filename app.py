@@ -234,6 +234,7 @@ def makeWebhookResult(data):
     row_number=['test','test1','test2','test3','test4','test5']
     while (i <length):
         row_id[i]=data[i]['p_id']
+        row_city[i]=data[i]['city']
         row_title[i]=data[i]['title']
         row_location[i]=data[i]['address']
         row_price[i]=data[i]['price']
@@ -283,7 +284,7 @@ def makeWebhookResult(data):
     },
     "msgid": "qr_231",
     "options": [
-        "Sector in "+city_names,
+        "Sector in "+row_city[0],
         "Other City?Specify",
         "Hot Property",
         "Price Range",
