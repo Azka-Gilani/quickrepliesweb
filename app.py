@@ -227,6 +227,7 @@ def makeWebhookResult(data):
     variable3='4332'
     variable4='4321'
     row_id=['test','test1','test2','test3','test4','test5']
+    row_city=['test','test1','test2','test3','test4','test5']
     row_title=['test','test1','test2','test3','test4','test5']
     row_location=['test','test1','test2','test3','test4','test5']
     row_price=['test','test1','test2','test3','test4','test5']
