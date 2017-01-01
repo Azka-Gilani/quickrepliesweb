@@ -381,6 +381,436 @@ def makeWebhookResult(data):
   }
   ]
   }
+    elif "ChooseLocationISB" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }
+  ]
+  }
+    elif "ChooseLocationRWP" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }
+  ]
+  }
+    elif "ChooseLocationKHI" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }
+  ]
+  }
+    elif "ChooseLocationLHR" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }
+  ]
+  }
+    elif "ChooseHotProperties" in intent_name:
+          message= {
+    "type": "catalogue",
+  "msgid": "cat_214",
+  "items": [{
+    "title": row_title[0],
+    "subtitle": row_location[0],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable1[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }, 
+     {
+    "title": row_title[1],
+    "subtitle": row_location[1],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable2[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[2],
+    "subtitle": row_location[2],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable3[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  },
+      {
+    "title": row_title[3],
+    "subtitle": row_location[3],
+    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
+    "options": [
+        {
+        "type": "element_share"
+      }, 
+            {
+        "type": "phone_number",
+        "title": "Call us",
+        "phone_number":"+92"+variable4[1:]
+      },
+        {
+      "type": "text",
+      "title": "Show Menu"
+    }
+
+    ]
+  }
+  ]
+  }
             
     return {
         "speech": speech,
