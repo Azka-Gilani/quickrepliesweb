@@ -309,7 +309,7 @@ def makeWebhookResult(data):
     ]
   }
     elif "ChooseCity" in intent_name:
-        message= {
+          message= {
     "type": "catalogue",
   "msgid": "cat_254",
   "items": [{
