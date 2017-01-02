@@ -15,7 +15,6 @@ from flask import make_response
 app = Flask(__name__)
 intent_name="string"
 QR=['0','1','2','3','4','5','6']
-city_names="string"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -247,7 +246,7 @@ def makeWebhookResult(data):
     variable3=str(row_number[2])
     variable4=str(row_number[3]) 
     
-    speech = "Here are some properties with your choice: "+"\n"+row_number[3] +" in "+ row_location[0] + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
+    speech = "Here are some properties with your choice: "+"\n"+intent_name +" in "+ city_names + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
     if "GettingStarted" in intent_name:     
         message= {
    "type": "quick_reply",
