@@ -295,7 +295,7 @@ def makeWebhookResult(data):
     ]
   }
     elif "ChooseCity" in intent_name:
-          message= {
+          message1= {
     "type": "catalogue",
   "msgid": "cat_214",
   "items": [{
@@ -816,6 +816,7 @@ def makeWebhookResult(data):
         "speech": speech,
         "displayText": speech,
         "data": message
+        "data2": message1
         # "contextOut": [],
         #"source": "apiai-weather-webhook-sample"
     }
