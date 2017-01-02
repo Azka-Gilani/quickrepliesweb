@@ -308,7 +308,7 @@ def makeWebhookResult(data):
         "1 Kanal"
     ]
   }
-    elif "ChoosePlotArea" in intent_name:
+    elif "ChooseCity" in intent_name:
         message= {
     "type": "catalogue",
   "msgid": "cat_254",
@@ -394,7 +394,7 @@ def makeWebhookResult(data):
   }
   ]
   }
-    elif "ChooseCity" in intent_name:
+    elif "ChoosePlotArea" in intent_name:
           message= {
     "type": "catalogue",
   "msgid": "cat_214",
