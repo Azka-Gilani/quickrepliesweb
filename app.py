@@ -919,8 +919,7 @@ def makeWebhookResult(data):
     }
 
 def makeWebhookResult1(data):
-    variable = data
-    speech = "This is the url:" + variable
+    speech = "This is the url:"+ "http:aarz.pk/islambad"
     
     return {
         "speech": speech,
