@@ -83,22 +83,22 @@ def processRequest(req):
         QR[3]="Price Range"
         QR[4]="Land Area"
         QR[5]="Change Location"
-    city_names=processlocation(req)
-    sector_names=processSector(req)
-    property_type=processPropertyType(req)
-    unit_property=processUnit(req)
-    area_property=processArea(req)
-    NoOfDays=processDate(req)
-    DateUnit=processDateUnit(req)
-    school=processSchool(req)
-    malls=processMalls(req)
-    transport=processTransport(req)
-    security=processSecurity(req)
-    airport=processAirport(req)
-    fuel=processFuel(req)
+    global city_names=processlocation(req)
+    global sector_names=processSector(req)
+    global property_type=processPropertyType(req)
+    global unit_property=processUnit(req)
+    global area_property=processArea(req)
+    global NoOfDays=processDate(req)
+    global DateUnit=processDateUnit(req)
+    global school=processSchool(req)
+    global malls=processMalls(req)
+    global transport=processTransport(req)
+    global security=processSecurity(req)
+    global airport=processAirport(req)
+    global fuel=processFuel(req)
     #minimum_value=processMinimum(req)
-    maximum_value=processMaximum(req)
-    latest=processLatestProperties(req)
+    global maximum_value=processMaximum(req)
+    global latest=processLatestProperties(req)
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
@@ -108,9 +108,11 @@ def processRequest(req):
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    elif "GettingStarted" in intent_name:
-        url = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
-        res = makeWebhookResult1(url)
+    else:
+        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+        result = urllib.urlopen(baseurl).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
     return res
 
 def processIntentName(req):
@@ -218,6 +220,7 @@ def processFuel(req):
    
 def makeWebhookResult(data):
     i=0
+    urlquick = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
     length=len(data)
     varibale1='344'
     variable2='322'
@@ -394,536 +397,118 @@ def makeWebhookResult(data):
   }
     elif "ChoosePlotArea" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
             
     elif "ChooseHotProperties" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
     elif "ChooseLocationISB" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
     elif "ChooseLocationRWP" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
     elif "ChooseLocationKHI" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
     elif "ChooseLocationLHR" in intent_name:
           message= {
-    "type": "catalogue",
-  "msgid": "cat_214",
-  "items": [{
-    "title": row_title[0],
-    "subtitle": row_location[0],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[0]+"/"+row_id[0]+".actual.0.jpg",
+    "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": urlquick
+    },
+    "msgid": "qr_231",
     "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable1[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
+    "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
-  }, 
-     {
-    "title": row_title[1],
-    "subtitle": row_location[1],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[1]+"/"+row_id[1]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable2[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[2],
-    "subtitle": row_location[2],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[2]+"/"+row_id[2]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable3[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  },
-      {
-    "title": row_title[3],
-    "subtitle": row_location[3],
-    "imgurl": "http://www.aarz.pk/assets/images/properties/"+row_id[3]+"/"+row_id[3]+".actual.0.jpg",
-    "options": [
-        {
-        "type": "element_share"
-      }, 
-            {
-        "type": "phone_number",
-        "title": "Call us",
-        "phone_number":"+92"+variable4[1:]
-      },
-        {
-      "type": "text",
-      "title": "Show Menu"
-    }
-
-    ]
-  }
-  ]
   }
             
     return {
         "speech": speech,
         "displayText": speech,
         "data": message
-        # "contextOut": [],
-        #"source": "apiai-weather-webhook-sample"
-    }
-
-def makeWebhookResult1(url):
-    speech = "This is the url:"
-    
-    return {
-        "speech": speech,
-        "displayText": speech
         # "contextOut": [],
         #"source": "apiai-weather-webhook-sample"
     }
