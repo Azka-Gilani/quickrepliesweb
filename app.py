@@ -52,6 +52,22 @@ def processRequest(req):
     global maximum_value
     global latest
     intent_name=processIntentName(req)
+    city_names=processlocation(req)
+    sector_names=processSector(req)
+    property_type=processPropertyType(req)
+    unit_property=processUnit(req)
+    area_property=processArea(req)
+    NoOfDays=processDate(req)
+    DateUnit=processDateUnit(req)
+    school=processSchool(req)
+    malls=processMalls(req)
+    transport=processTransport(req)
+    security=processSecurity(req)
+    airport=processAirport(req)
+    fuel=processFuel(req)
+    #minimum_value=processMinimum(req)
+    maximum_value=processMaximum(req)
+    latest=processLatestProperties(req)
     if "ChooseCity" in intent_name:        
         QR[0]="Sector in "+city_names
         QR[1]="Other City?Specify"
@@ -95,22 +111,7 @@ def processRequest(req):
         QR[4]="Land Area"
         QR[5]="Change Location"
         
-    city_names=processlocation(req)
-    sector_names=processSector(req)
-    property_type=processPropertyType(req)
-    unit_property=processUnit(req)
-    area_property=processArea(req)
-    NoOfDays=processDate(req)
-    DateUnit=processDateUnit(req)
-    school=processSchool(req)
-    malls=processMalls(req)
-    transport=processTransport(req)
-    security=processSecurity(req)
-    airport=processAirport(req)
-    fuel=processFuel(req)
-    #minimum_value=processMinimum(req)
-    maximum_value=processMaximum(req)
-    latest=processLatestProperties(req)
+        
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
