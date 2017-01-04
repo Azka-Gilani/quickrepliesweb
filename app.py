@@ -109,8 +109,8 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult(data)
     else:
-        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
-        res = makeWebhookResult1(baseurl)
+        url = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+        res = makeWebhookResult1(url)
     return res
 
 def processIntentName(req):
@@ -918,8 +918,8 @@ def makeWebhookResult(data):
         #"source": "apiai-weather-webhook-sample"
     }
 
-def makeWebhookResult1(data):
-    speech = "This is the url:"+ "http:aarz.pk/islambad"
+def makeWebhookResult1(url):
+    speech = "This is the url:"
     
     return {
         "speech": speech,
