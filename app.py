@@ -108,7 +108,7 @@ def processRequest(req):
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    else:
+    elif "GettingStarted" in intent_name:
         url = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
         res = makeWebhookResult1(url)
     return res
