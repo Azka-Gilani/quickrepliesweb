@@ -13,7 +13,6 @@ from flask import make_response
 
 # Flask app should start in global layout
 app = Flask(__name__)
-intent_name="string"
 QR=['0','1','2','3','4','5','6']
 
 @app.route('/webhook', methods=['POST'])
@@ -36,8 +35,10 @@ def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     global city_names
+    global baseurl
     city_names=processlocation(req)
     global QR
+    
     global intent_name
     intent_name=processIntentName(req)
     if "ChooseCity" in intent_name:        
@@ -102,17 +103,14 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "GettingStarted" in intent_name or "BuyPlot" in intent_name or "Menu" in intent_name or "ChooseArea" in intent_name:
-        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
-        result = urllib.urlopen(baseurl).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data)
-    else:
-        
+    if "ChooseCity" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
+    else:
+        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+        res = makeWebhookResult1(baseurl)
     return res
 
 def processIntentName(req):
@@ -920,6 +918,78 @@ def makeWebhookResult(data):
         #"source": "apiai-weather-webhook-sample"
     }
 
+def makeWebhookResult1(data):
+
+    speech = "This is the url:" + data
+    
+    if "GettingStarted" in intent_name:
+        message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "here is the response: "+ data
+    },
+    "msgid": "qr_212",
+    "options": [
+        "Buy Property"
+    ]
+  }
+    elif "BuyPlot" in intent_name:
+        message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "Great! Kindly select the city in which you want to buy property?"
+    },
+    "msgid": "qr_213",
+    "options": [
+        "Rawalpindi",
+        "Karachi",
+        "Islamabad",
+        "Lahore",
+        "Other city?"
+    ]
+  }
+    elif "Menu" in intent_name:
+        message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "Kindly select one of the options"
+    },
+    "msgid": "qr_231",
+    "options": [
+        "Sector in "+row_city[0],
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
+        
+    ]
+  }
+    elif "ChooseArea" in intent_name:
+        message= {
+   "type": "quick_reply",
+    "content": {
+        "type": "text",
+        "text": "Kindly select one of the options"
+    },
+    "msgid": "qr_231",
+    "options": [
+        "10 Marla",
+        "5 Marla",
+        "1 Kanal"
+    ]
+  }
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": message
+        # "contextOut": [],
+        #"source": "apiai-weather-webhook-sample"
+    }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
