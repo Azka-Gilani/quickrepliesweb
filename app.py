@@ -122,7 +122,7 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult(data)
     elif "GettingStarted" in intent_name:
-        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad
+        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
         data = json.loads(result)
         res = makeWebhookResult(data)
     return res
