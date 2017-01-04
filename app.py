@@ -919,74 +919,12 @@ def makeWebhookResult(data):
     }
 
 def makeWebhookResult1(data):
-
-    speech = "This is the url:" + data
+    variable = data
+    speech = "This is the url:" + variable
     
-    if "GettingStarted" in intent_name:
-        message= {
-   "type": "quick_reply",
-    "content": {
-        "type": "text",
-        "text": "here is the response: "+ data
-    },
-    "msgid": "qr_212",
-    "options": [
-        "Buy Property"
-    ]
-  }
-    elif "BuyPlot" in intent_name:
-        message= {
-   "type": "quick_reply",
-    "content": {
-        "type": "text",
-        "text": "Great! Kindly select the city in which you want to buy property?"
-    },
-    "msgid": "qr_213",
-    "options": [
-        "Rawalpindi",
-        "Karachi",
-        "Islamabad",
-        "Lahore",
-        "Other city?"
-    ]
-  }
-    elif "Menu" in intent_name:
-        message= {
-   "type": "quick_reply",
-    "content": {
-        "type": "text",
-        "text": "Kindly select one of the options"
-    },
-    "msgid": "qr_231",
-    "options": [
-        "Sector in "+row_city[0],
-        "Other City?Specify",
-        "Hot Property",
-        "Price Range",
-        "Land Area",
-        "Property Type",
-        "Buy Property"
-        
-    ]
-  }
-    elif "ChooseArea" in intent_name:
-        message= {
-   "type": "quick_reply",
-    "content": {
-        "type": "text",
-        "text": "Kindly select one of the options"
-    },
-    "msgid": "qr_231",
-    "options": [
-        "10 Marla",
-        "5 Marla",
-        "1 Kanal"
-    ]
-  }
     return {
         "speech": speech,
         "displayText": speech,
-        "data": message
         # "contextOut": [],
         #"source": "apiai-weather-webhook-sample"
     }
