@@ -36,6 +36,21 @@ def processRequest(req):
         return {}
     global QR
     global intent_name
+    global city_names   
+    global sector_names
+    global property_type
+    global unit_property
+    global area_property
+    global NoOfDays
+    global DateUnit
+    global school
+    global malls
+    global transport
+    global security
+    global airport
+    global fuel
+    global maximum_value
+    global latest
     intent_name=processIntentName(req)
     if "ChooseCity" in intent_name:        
         QR[0]="Sector in "+city_names
@@ -79,22 +94,23 @@ def processRequest(req):
         QR[3]="Price Range"
         QR[4]="Land Area"
         QR[5]="Change Location"
-    global city_names=processlocation(req)
-    global sector_names=processSector(req)
-    global property_type=processPropertyType(req)
-    global unit_property=processUnit(req)
-    global area_property=processArea(req)
-    global NoOfDays=processDate(req)
-    global DateUnit=processDateUnit(req)
-    global school=processSchool(req)
-    global malls=processMalls(req)
-    global transport=processTransport(req)
-    global security=processSecurity(req)
-    global airport=processAirport(req)
-    global fuel=processFuel(req)
+        
+    city_names=processlocation(req)
+    sector_names=processSector(req)
+    property_type=processPropertyType(req)
+    unit_property=processUnit(req)
+    area_property=processArea(req)
+    NoOfDays=processDate(req)
+    DateUnit=processDateUnit(req)
+    school=processSchool(req)
+    malls=processMalls(req)
+    transport=processTransport(req)
+    security=processSecurity(req)
+    airport=processAirport(req)
+    fuel=processFuel(req)
     #minimum_value=processMinimum(req)
-    global maximum_value=processMaximum(req)
-    global latest=processLatestProperties(req)
+    maximum_value=processMaximum(req)
+    latest=processLatestProperties(req)
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
