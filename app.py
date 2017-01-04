@@ -923,7 +923,7 @@ def makeWebhookResult1(data):
     
     return {
         "speech": speech,
-        "displayText": speech,
+        "displayText": speech
         # "contextOut": [],
         #"source": "apiai-weather-webhook-sample"
     }
