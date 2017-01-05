@@ -68,7 +68,7 @@ def processRequest(req):
     #minimum_value=processMinimum(req)
     maximum_value=processMaximum(req)
     latest=processLatestProperties(req)
-    if "ChooseCity" in intent_name:        
+    if "ChooseCity" in intent_name:      
         QR[0]="Sector in "+city_names
         QR[1]="Other City?Specify"
         QR[2]="Hot Property"
@@ -122,7 +122,7 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult(data)
     else:
-        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names
+        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
