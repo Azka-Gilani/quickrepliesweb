@@ -121,7 +121,7 @@ def processRequest(req):
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    else:
+    elif "GettingStarted" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
