@@ -71,16 +71,12 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "GettingStarted" in intent_name or "BuyPlot" in intent_name:
+    if "GettingStarted" in intent_name or "BuyPlot" in intent_name or "Menu" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    elif "Menu" in intent_name:
-        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
-        result = urllib.urlopen(baseurl).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data)
+        
     else:
         baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
         result = urllib.urlopen(baseurl).read()
@@ -255,15 +251,17 @@ def makeWebhookResult(data):
    "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "Great! Kindly select the city in which you want to buy property?"
+        "text": "Kindly select one of the options"
     },
-    "msgid": "qr_213",
+    "msgid": "qr_231",
     "options": [
-        "Rawalpindi",
-        "Karachi",
-        "Islamabad",
-        "Lahore",
-        "Other city?"
+        "Choose Sector",
+        "Other City?Specify",
+        "Hot Property",
+        "Price Range",
+        "Land Area",
+        "Property Type",
+        "Buy Property"
     ]
   }
     elif "ChooseArea" in intent_name:
