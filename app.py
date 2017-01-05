@@ -218,8 +218,8 @@ def makeWebhookResult(data):
     
     speech = "Here are some properties with your choice: "+"\n" + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
     
-    if "GettingStarted" in intent_name:     
-          message= {
+    if "ChooseCity" in intent_name:     
+        message= {
     "type": "quick_reply",
     "content": {
         "type": "text",
@@ -282,7 +282,7 @@ def makeWebhookResult(data):
         "1 Kanal"
     ]
   }
-    elif "ChooseCity" in intent_name:
+    elif "GettingStarted" in intent_name:
           message= {
     "type": "catalogue",
   "msgid": "cat_254",
