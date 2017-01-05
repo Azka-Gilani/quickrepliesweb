@@ -67,51 +67,7 @@ def processRequest(req):
     fuel=processFuel(req)
     #minimum_value=processMinimum(req)
     maximum_value=processMaximum(req)
-    latest=processLatestProperties(req)
-    if "ChooseCity" in intent_name:      
-        QR[0]="Sector in "+city_names
-        QR[1]="Other City?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Property Type"
-    elif "ChooseSector" in intent_name:        
-        QR[0]="(Y)"
-        QR[1]="Other Sector?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Property Type"   
-    elif "ChangeType" in intent_name:        
-        QR[0]="(Y)"
-        QR[1]="Other Type?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Change Location"  
-    elif "ChooseHotProperties" in intent_name:        
-        QR[0]="(Y)"
-        QR[1]="Change Location"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Change City" 
-    elif "ChoosePlotArea" in intent_name:        
-        QR[0]="(Y)"
-        QR[1]="Other Area?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Change Location"
-    elif "DefinePriceRange" in intent_name:        
-        QR[0]="(Y)"
-        QR[1]="Other Range?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Change Location"
-        
-        
+    latest=processLatestProperties(req)    
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
@@ -235,10 +191,10 @@ def makeWebhookResult(data):
     i=0
     urlquick = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
     length=len(data)
-    varibale1='344'
-    variable2='322'
-    variable3='4332'
-    variable4='4321'
+    varibale1='34894'
+    variable2='32289'
+    variable3='433289'
+    variable4='432190'
     row_id=['test','test1','test2','test3','test4','test5']
     row_city=['test','test1','test2','test3','test4','test5']
     row_title=['test','test1','test2','test3','test4','test5']
@@ -263,7 +219,7 @@ def makeWebhookResult(data):
     speech = "Here are some properties with your choice: "+"\n" + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
     
     if "GettingStarted" in intent_name:     
-        message= {
+          message= {
     "type": "quick_reply",
     "content": {
         "type": "text",
@@ -276,7 +232,7 @@ def makeWebhookResult(data):
         "Yellow",
         "Blue"
     ]
-}
+  }
     elif "BuyPlot" in intent_name:
         message= {
    "type": "quick_reply",
