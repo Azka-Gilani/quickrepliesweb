@@ -261,18 +261,22 @@ def makeWebhookResult(data):
     variable4=str(row_number[3]) 
     
     speech = "Here are some properties with your choice: "+"\n" + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
+    
     if "GettingStarted" in intent_name:     
         message= {
-   "type": "quick_reply",
+    "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "I am your digital assistant today, How can I help you with your property needs?"
+        "text": "What's your favourite color?"
     },
     "msgid": "qr_212",
     "options": [
-        "Buy Property"
+        "Red",
+        "Green",
+        "Yellow",
+        "Blue"
     ]
-  }
+}
     elif "BuyPlot" in intent_name:
         message= {
    "type": "quick_reply",
