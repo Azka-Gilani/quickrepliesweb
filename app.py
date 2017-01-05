@@ -35,21 +35,6 @@ def processRequest(req):
         return {}
     global QR
     global intent_name
-    global city_names   
-    global sector_names
-    global property_type
-    global unit_property
-    global area_property
-    global NoOfDays
-    global DateUnit
-    global school
-    global malls
-    global transport
-    global security
-    global airport
-    global fuel
-    global maximum_value
-    global latest
     intent_name=processIntentName(req)
     city_names=processlocation(req)
     sector_names=processSector(req)
@@ -71,7 +56,7 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "GettingStarted" in intent_name or "BuyPlot" in intent_name or "Menu" in intent_name:
+    if "GettingStarted" in intent_name or "BuyPlot" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
@@ -189,7 +174,7 @@ def processFuel(req):
    
 def makeWebhookResult(data):
     i=0
-    urlquick = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+    urlquick = "https://aarz.pk/bot/index.php?city_name="
     length=len(data)
     varibale1='34894'
     variable2='32289'
