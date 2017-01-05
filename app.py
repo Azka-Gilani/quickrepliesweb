@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import urllib
 import urllib2
 import json
@@ -72,13 +71,18 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value
-    if "ChooseCity" in intent_name:
+    if "GettingStarted" in intent_name or "BuyPlot" in intent_name:
+        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
+        result = urllib.urlopen(baseurl).read()
+        data = json.loads(result)
+        res = makeWebhookResult(data)
+    elif "Menu" in intent_name:
         baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    elif "GettingStarted" in intent_name:
-        baseurl = "https://aarz.pk/bot/index.php?city_name=islamabad"
+    else:
+        baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
         result = urllib.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
@@ -218,19 +222,16 @@ def makeWebhookResult(data):
     
     speech = "Here are some properties with your choice: "+"\n" + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
     
-    if "ChooseCity" in intent_name:     
+    if "GettingStarted" in intent_name:     
         message= {
     "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "What's your favourite color?"
+        "text": "I am your digital assistant today, How can I help you with your property needs?"
     },
     "msgid": "qr_212",
     "options": [
-        "Red",
-        "Green",
-        "Yellow",
-        "Blue"
+        "Buy Property"
     ]
   }
     elif "BuyPlot" in intent_name:
@@ -282,7 +283,7 @@ def makeWebhookResult(data):
         "1 Kanal"
     ]
   }
-    elif "GettingStarted" in intent_name:
+    elif "ChooseCity" in intent_name:
           message= {
     "type": "catalogue",
   "msgid": "cat_254",
