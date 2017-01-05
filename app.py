@@ -255,18 +255,15 @@ def makeWebhookResult(data):
    "type": "quick_reply",
     "content": {
         "type": "text",
-        "text": "Kindly select one of the options"
+        "text": "Great! Kindly select the city in which you want to buy property?"
     },
-    "msgid": "qr_231",
+    "msgid": "qr_213",
     "options": [
-        "Sector in "+row_city[0],
-        "Other City?Specify",
-        "Hot Property",
-        "Price Range",
-        "Land Area",
-        "Property Type",
-        "Buy Property"
-        
+        "Rawalpindi",
+        "Karachi",
+        "Islamabad",
+        "Lahore",
+        "Other city?"
     ]
   }
     elif "ChooseArea" in intent_name:
